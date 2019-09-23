@@ -55,7 +55,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         holder.cb_id_done.setOnCheckedChangeListener((compoundButton, b) -> {
             task.setCompleted(b);
             db.getTasks().insertTask(task);
-            Toast.makeText(compoundButton.getContext(), "status " + task.getCompleted(), Toast.LENGTH_SHORT).show();
         });
         holder.itemView.setOnClickListener(view -> {
             FragmentManager fm = ((AppCompatActivity) view.getContext()).getSupportFragmentManager();
