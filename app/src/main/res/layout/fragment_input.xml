@@ -20,12 +20,15 @@
             android:text="" />
 
         <EditText
+            android:gravity="top"
             android:id="@+id/et_body"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:hint="Enter Body"
-            android:text="TextView" />
+            android:text=""
+            android:minLines="1"
+            android:maxLines="10"/>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -34,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/stat_sys_download_done" />
+        android:src="@drawable/ic_done_black_24dp"
+       />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,6 +1,7 @@
 package com.test.myapplication.db;
 
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface TaskDao {
 
     @Query("SELECT * FROM Task")
-    List<Task> getAllTasks();
+    LiveData<List<Task>> getAllTasks();
 
     @Query("SELECT * FROM Task where id==:id")
     Task getAllTasksById(int id);
@@ -22,7 +23,11 @@ public interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertTask(Task task);
 
-    @Query("DELETE  FROM Task")
-    void deleteAll();
+
+    @Query("DELETE  FROM Task where completed==1")
+    void deleteAllCompleatedTask();
+
+    @Query("DELETE  FROM Task where id==:id")
+    void deleteTaskById(int id);
 
 }

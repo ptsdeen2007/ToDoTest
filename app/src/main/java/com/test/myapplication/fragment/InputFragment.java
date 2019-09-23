@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.room.Room;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.test.myapplication.LandScreen;
 import com.test.myapplication.R;
 import com.test.myapplication.Task;
 import com.test.myapplication.db.AppDatabase;
@@ -24,8 +25,6 @@ import java.util.List;
 public class InputFragment extends Fragment {
 
 
-    private AppDatabase db;
-
     public InputFragment() {
         // Required empty public constructor
     }
@@ -34,9 +33,9 @@ public class InputFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        db = Room.databaseBuilder(getContext(), AppDatabase.class, "MasterImp").allowMainThreadQueries().build();
+
         int id = getArguments().getInt("id", -1);
-        Task taskToUpdate = db.getTasks().getAllTasksById(id);
+        Task taskToUpdate = LandScreen.db.getTasks().getAllTasksById(id);
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_input, container, false);
@@ -56,10 +55,10 @@ public class InputFragment extends Fragment {
             if(id>=0){
                taskToUpdate.setTitle(str_title);
                taskToUpdate.setDescription(str_body);
-                db.getTasks().insertTask(taskToUpdate);
+                LandScreen.db.getTasks().insertTask(taskToUpdate);
             }else {
                 Task task=new Task(str_title,str_body,false);
-                db.getTasks().insertTask(task);
+                LandScreen.db.getTasks().insertTask(task);
             }
 
             FragmentManager fm = ((AppCompatActivity)v.getContext()).getSupportFragmentManager();
