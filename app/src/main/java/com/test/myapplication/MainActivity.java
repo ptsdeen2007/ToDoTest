@@ -6,6 +6,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.test.myapplication.fragment.InputFragment;
+import com.test.myapplication.fragment.TaskListFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment_container, new TaskListFragment());
+//        ft.replace(R.id.fragment_container, new InputFragment());
         ft.commit();
     }
 }
